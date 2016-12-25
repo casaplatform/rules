@@ -72,7 +72,8 @@ func (e *Engine) Start(config *viper.Viper) error {
 		}
 
 		// Pass the message to each rule
-		for _, r := range e.Rules {
+		for i := 0; i < len(e.Rules); i++ {
+			r := e.Rules[i]
 			// Use a go routine so other rules aren't held up by
 			// a single slow one.
 			go func() {
